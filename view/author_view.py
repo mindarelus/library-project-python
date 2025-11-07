@@ -1,11 +1,10 @@
 from typing import List
-from view.main_view import print_header
 from model.user import User
 from model.book import Book
 
 class AuthorView:
     def show_author_menu(self, user: User):
-        print_header(f"Author Menu | Logged in as {user.name}")
+        print(f"\n--- Author Menu | Logged in as {user.name} ---")
         print("1. Publish a New Book")
         print("2. View My Published Books")
         print("3. View My Profile")
@@ -13,7 +12,7 @@ class AuthorView:
         return input("Choose an option: ")
 
     def get_publish_book_details(self):
-        print_header("Publish New Book")
+        print("\n--- Publish New Book ---")
         title = input("Book Title: ")
         description = input("Book Description: ")
         while True:
@@ -27,7 +26,7 @@ class AuthorView:
         return title, description, price, content_path
 
     def display_author_books(self, books: List[Book]):
-        print_header("My Published Books")
+        print("\n--- My Published Books ---")
         if not books:
             self.show_message("You haven't published any books yet.")
             return
@@ -39,7 +38,7 @@ class AuthorView:
 
     def display_user_profile(self, user: User):
         """Displays the current user's profile."""
-        print_header("My Profile")
+        print("\n--- My Profile ---")
         print(f"Name: {user.name}")
         print(f"Email: {user.email}")
         print(f"Role: {user.role.capitalize()}")

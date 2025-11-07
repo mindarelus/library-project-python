@@ -15,7 +15,7 @@
         "email": "mitko@abv.bg",
         "password": "123",
         "role": "reader",
-        "balance": 178.0,
+        "balance": 200.0,
         "is_banned": false,
         "__class": "User"
     },

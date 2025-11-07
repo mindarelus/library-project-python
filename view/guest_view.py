@@ -1,9 +1,8 @@
-import getpass
-from view.main_view import print_header
+from getpass import getpass
 
 class GuestView:
     def show_guest_menu(self):
-        print_header("Guest Menu")
+        print("Guest Menu")
         print("1. Login")
         print("2. Register")
         print("3. Browse Books")
@@ -11,10 +10,10 @@ class GuestView:
         return input("Choose an option: ")
 
     def get_registration_details(self):
-        print_header("Register New User")
+        print("Register New User")
         name = input("Enter your name: ")
         email = input("Enter your email: ")
-        password = getpass.getpass("Enter your password: ")
+        password = getpass("Enter your password: ")
         
         while True:
             role = input("Choose a role (reader/author): ").lower()
@@ -25,9 +24,9 @@ class GuestView:
         return name, email, password, role
 
     def get_login_details(self):
-        print_header("Login")
+        print("Login")
         email = input("Enter your email: ")
-        password = getpass.getpass("Enter your password: ")
+        password = getpass("Enter your password: ")
         return email, password
 
     def show_message(self, message):

@@ -1,19 +1,20 @@
-from typing import List, Dict
-from view.main_view import print_header
 from model.user import User
+from typing import List, Dict
 from model.book import Book
 
+
 class ReaderView:
-    def show_reader_menu(self, user: User):
-        print_header(f"Reader Menu | Logged in as {user.name} | Balance: {user.balance:.2f} credits")
+    def show_reader_menu(self, user: User) -> str:
+        print(f"\n--- Reader Menu (Logged in as {user.name}, Balance: {user.balance:.2f}) ---")
         print("1. Browse All Books")
         print("2. My Purchased Books")
         print("3. Rate a Book")
         print("4. View My Profile")
         print("5. Logout")
-        return input("Choose an option: ")
+        return input("Enter your choice: ")
 
     def get_rating_details(self) -> (str, int, str):
+        print("\n--- Rate a Book ---")
         book_choice = input("Enter the number of the book you want to rate (or 'q' to cancel): ")
         if book_choice.lower() == 'q' or not book_choice:
             return None, None, None
@@ -31,7 +32,6 @@ class ReaderView:
         return book_choice, value, comment
 
     def display_user_profile(self, user: User):
-        """Displays the current user's profile."""
         print("\n--- Your Profile ---")
         print(f"Name: {user.name}")
         print(f"Email: {user.email}")
@@ -40,7 +40,7 @@ class ReaderView:
         print("--------------------")
 
     def display_books_for_rating(self, books: List[Book], authors: Dict[str, str], reader_id: str):
-        print("\n--- Rate a Book ---")
+        # The header is now printed in get_rating_details
         print("You can rate the following books you've purchased:")
         if not books:
             print("You have no purchased books to rate yet.")

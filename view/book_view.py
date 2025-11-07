@@ -1,5 +1,4 @@
 from typing import List, Dict
-from view.main_view import print_header
 from model.book import Book
 from model.user import User
 from services.billing_service import BillingService
