@@ -1,0 +1,24 @@
+[
+    {
+        "id": "7a32d75d-76e5-45c5-8354-758f37aeed83",
+        "book_id": "075a370e-47bf-4985-8448-61c57af37686",
+        "reader_id": "41ff3d81-3dc2-4ded-9207-e66ccc6cba9b",
+        "price": 22.0,
+        "purchase_date": {
+            "__class": "datetime",
+            "value": "2025-11-07 11:37:36.296413"
+        },
+        "__class": "Purchase"
+    },
+    {
+        "id": "90aaf814-9d5e-4b6a-8b34-13ad2a1b4a4a",
+        "book_id": "075a370e-47bf-4985-8448-61c57af37686",
+        "reader_id": "add669d4-36af-4fd5-aaa4-fa019d96b929",
+        "price": 22.0,
+        "purchase_date": {
+            "__class": "datetime",
+            "value": "2025-11-07 11:53:15.985658"
+        },
+        "__class": "Purchase"
+    }
+]

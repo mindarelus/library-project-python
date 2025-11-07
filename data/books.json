@@ -1,0 +1,25 @@
+[
+    {
+        "id": "075a370e-47bf-4985-8448-61c57af37686",
+        "title": "To",
+        "author_id": "3792b694-d9bb-4330-b5f6-2984931fc24e",
+        "description": "Cool book Sci-Fi",
+        "price": 22.0,
+        "content_path": "books/book1.txt",
+        "ratings": [
+            {
+                "reader_id": "41ff3d81-3dc2-4ded-9207-e66ccc6cba9b",
+                "value": 3,
+                "comment": "nice one",
+                "__class": "Rating"
+            },
+            {
+                "reader_id": "add669d4-36af-4fd5-aaa4-fa019d96b929",
+                "value": 4,
+                "comment": "so good",
+                "__class": "Rating"
+            }
+        ],
+        "__class": "Book"
+    }
+]

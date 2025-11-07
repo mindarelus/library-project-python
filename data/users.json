@@ -1,0 +1,42 @@
+[
+    {
+        "id": "efc94d28-0ed2-4d46-9493-36b71b64ff98",
+        "name": "Admin",
+        "email": "admin@library.com",
+        "password": "admin123",
+        "role": "admin",
+        "balance": 100.0,
+        "is_banned": false,
+        "__class": "User"
+    },
+    {
+        "id": "41ff3d81-3dc2-4ded-9207-e66ccc6cba9b",
+        "name": "mitko",
+        "email": "mitko@abv.bg",
+        "password": "123",
+        "role": "reader",
+        "balance": 178.0,
+        "is_banned": false,
+        "__class": "User"
+    },
+    {
+        "id": "3792b694-d9bb-4330-b5f6-2984931fc24e",
+        "name": "ivan",
+        "email": "ivan@abv.bg",
+        "password": "123",
+        "role": "author",
+        "balance": 144.0,
+        "is_banned": false,
+        "__class": "User"
+    },
+    {
+        "id": "add669d4-36af-4fd5-aaa4-fa019d96b929",
+        "name": "mitko",
+        "email": "mitko@gmail.com",
+        "password": "123",
+        "role": "reader",
+        "balance": 78.0,
+        "is_banned": false,
+        "__class": "User"
+    }
+]
