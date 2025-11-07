@@ -20,5 +20,16 @@
             "value": "2025-11-07 11:53:15.985658"
         },
         "__class": "Purchase"
+    },
+    {
+        "id": "88ed1502-2de3-42bf-b795-3be274ca0379",
+        "book_id": "c726ec71-76ee-4765-8b1c-3999ac741361",
+        "reader_id": "41ff3d81-3dc2-4ded-9207-e66ccc6cba9b",
+        "price": 50.0,
+        "purchase_date": {
+            "__class": "datetime",
+            "value": "2025-11-07 17:32:03.796498"
+        },
+        "__class": "Purchase"
     }
 ]

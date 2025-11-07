@@ -1,5 +1,6 @@
 from typing import List, Union
 from model.user import User
+from services.config_service import SortOption
 
 
 class AdminView:
@@ -9,7 +10,8 @@ class AdminView:
         print("2. Ban/Unban a User")
         print("3. Add Credits to User")
         print("4. Browse All Books")
-        print("5. Logout")
+        print("5. Configure Book Sort Order")
+        print("6. Logout")
         return input("Enter your choice: ")
 
     def display_all_users(self, users: List[User]):
@@ -24,6 +26,22 @@ class AdminView:
             status = "Banned" if user.is_banned else "Active"
             print(f"{i + 1:<4} {user.id:<37} {user.name:<15} {user.email:<25} {user.role:<8} {user.balance:>10.2f} {status:<10}")
         print("-" * 115)
+
+    def show_book_sort_config_menu(self, current_sort_strategy: SortOption) -> str:
+        print("\n--- Configure Book Sort Order ---")
+        print(f"Current sort order is by: '{current_sort_strategy}'")
+        print("Choose a new sort order:")
+        print("1. By Publication Date (newest first)")
+        print("2. By Price (lowest first)")
+        choice = input("Enter your choice (or 'q' to cancel): ")
+        if choice == '1':
+            return 'publish_date'
+        elif choice == '2':
+            return 'price'
+        elif choice.lower() == 'q':
+            return 'cancel'
+        else:
+            return 'invalid'
 
     def get_user_choice(self, prompt: str) -> str:
         return input(prompt)

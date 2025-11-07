@@ -1,10 +1,11 @@
 class AppController:
-    def __init__(self, auth_service, book_service, billing_service, admin_service,
+    def __init__(self, auth_service, book_service, billing_service, admin_service, config_service,
                  guest_view, reader_view, author_view, book_view, admin_view):
         self.auth_service = auth_service
         self.book_service = book_service
         self.billing_service = billing_service
         self.admin_service = admin_service
+        self.config_service = config_service
         self.guest_view = guest_view
         self.reader_view = reader_view
         self.author_view = author_view
@@ -150,6 +151,19 @@ class AppController:
         self.author_view.display_author_books(books)
 
     # --- Admin Handlers ---
+    def handle_configure_book_sort(self):
+        """Controller for configuring the global book sort order."""
+        current_strategy = self.config_service.get_book_sort_strategy()
+        choice = self.admin_view.show_book_sort_config_menu(current_strategy)
+
+        if choice in ['publish_date', 'price']:
+            self.config_service.set_book_sort_strategy(choice)
+            self.admin_view.show_message(f"\nBook sort order has been updated to '{choice}'.")
+        elif choice == 'cancel':
+            self.admin_view.show_message("\nOperation cancelled.")
+        else:
+            self.admin_view.show_message("\nInvalid choice.")
+
     def handle_list_all_users(self):
         """Controller for listing all users for the admin."""
         admin = self.auth_service.get_current_user()
@@ -283,6 +297,8 @@ class AppController:
             elif choice == '4':
                 self.handle_browse_books()
             elif choice == '5':
+                self.handle_configure_book_sort()
+            elif choice == '6':
                 self.auth_service.logout()
                 self.guest_view.show_message("\nYou have been logged out.")
                 return

@@ -15,7 +15,7 @@
         "email": "mitko@abv.bg",
         "password": "123",
         "role": "reader",
-        "balance": 200.0,
+        "balance": 150.0,
         "is_banned": false,
         "__class": "User"
     },
@@ -35,7 +35,17 @@
         "email": "mitko@gmail.com",
         "password": "123",
         "role": "reader",
-        "balance": 78.0,
+        "balance": 89.0,
+        "is_banned": false,
+        "__class": "User"
+    },
+    {
+        "id": "31d82fb3-1ab1-4531-bf32-aa143c972088",
+        "name": "stephen king",
+        "email": "sk@abv.bg",
+        "password": "12345",
+        "role": "author",
+        "balance": 150.0,
         "is_banned": false,
         "__class": "User"
     }

@@ -1,18 +1,21 @@
 import os
 from typing import List, Union
+from datetime import datetime
 
 from dao.book_repository import BookRepository
 from dao.purchase_repository import PurchaseRepository
 from dao.user_repository import UserRepository
 from model.book import Book, Rating
 from model.user import User
+from services.config_service import ConfigService
 
 
 class BookService:
-    def __init__(self, book_repo: BookRepository, user_repo: UserRepository, purchase_repo: PurchaseRepository):
+    def __init__(self, book_repo: BookRepository, user_repo: UserRepository, purchase_repo: PurchaseRepository, config_service: ConfigService):
         self.book_repo = book_repo
         self.user_repo = user_repo
         self.purchase_repo = purchase_repo
+        self.config_service = config_service
 
     def publish_book(self, title: str, description: str, price: float, content_path: str, author: User) -> Book:
         """
@@ -31,14 +34,27 @@ class BookService:
         if not os.path.exists(content_path):
             raise FileNotFoundError(f"Content file not found at: {content_path}")
 
-        new_book = Book(id=None, title=title, description=description, price=price,
-                        content_path=content_path, author_id=author.id)
+        new_book = Book(
+            id=None, 
+            title=title, 
+            description=description, 
+            price=price,
+            content_path=content_path, 
+            author_id=author.id,
+            publish_date=datetime.utcnow().isoformat() # Explicitly set publish date on creation
+        )
         
         return self.book_repo.add(new_book)
 
     def get_all_books(self) -> List[Book]:
-        """Returns a list of all books."""
-        return self.book_repo.find_all()
+        """Returns a list of all books, sorted according to the global config."""
+        books = self.book_repo.find_all()
+        sort_strategy = self.config_service.get_book_sort_strategy()
+
+        reverse_sort = True if sort_strategy == 'publish_date' else False
+        books.sort(key=lambda b: getattr(b, sort_strategy), reverse=reverse_sort)
+        
+        return books
 
     def get_book_by_id(self, book_id: str) -> Union[Book, None]:
         """Finds a book by its ID."""
@@ -89,5 +105,9 @@ class BookService:
         return self.book_repo.edit(book)
 
     def get_author_books(self, author_id: str) -> List[Book]:
-        """Gets all books published by a specific author."""
+        """
+        Gets all books published by a specific author.
+        Note: This list is not currently sorted by the global setting,
+        as it's a more specific view. This could be changed if needed.
+        """
         return self.book_repo.find_by_author_id(author_id)

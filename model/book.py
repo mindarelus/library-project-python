@@ -1,5 +1,6 @@
 from dataclasses import dataclass, field
 from typing import List, Union
+from datetime import datetime
 
 @dataclass
 class Rating:
@@ -15,6 +16,7 @@ class Book:
     description: str
     price: float
     content_path: str  # Path to the .txt file
+    publish_date: str = field(default_factory=lambda: datetime.utcnow().isoformat())
     ratings: List[Rating] = field(default_factory=list)
 
     def get_average_rating(self) -> (float, int):

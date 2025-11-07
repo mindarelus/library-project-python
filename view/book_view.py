@@ -17,7 +17,7 @@ class BookView:
         for i, book in enumerate(books):
             avg_rating, num_ratings = book.get_average_rating()
             rating_str = f"{avg_rating:.1f}/5.0" if num_ratings > 0 else "No ratings yet"
-            print(f"{i + 1}. '{book.title}' by {authors.get(book.author_id, 'Unknown')} - Rating: {rating_str}")
+            print(f"{i + 1}. '{book.title}' by {authors.get(book.author_id, 'Unknown')} - Price: {book.price:.2f} credits - Rating: {rating_str}")
 
     def display_book_details(self, book: Book, author_name: str, is_purchased: bool, is_reader: bool):
         """Displays the full details of a single book and the available actions."""

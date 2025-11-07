@@ -6,6 +6,7 @@
         "description": "Cool book Sci-Fi",
         "price": 22.0,
         "content_path": "books/book1.txt",
+        "publish_date": "2025-11-07T15:30:53.275943",
         "ratings": [
             {
                 "reader_id": "41ff3d81-3dc2-4ded-9207-e66ccc6cba9b",
@@ -17,6 +18,24 @@
                 "reader_id": "add669d4-36af-4fd5-aaa4-fa019d96b929",
                 "value": 4,
                 "comment": "so good",
+                "__class": "Rating"
+            }
+        ],
+        "__class": "Book"
+    },
+    {
+        "id": "c726ec71-76ee-4765-8b1c-3999ac741361",
+        "title": "Firestarter",
+        "author_id": "31d82fb3-1ab1-4531-bf32-aa143c972088",
+        "description": "fs",
+        "price": 50.0,
+        "content_path": "books/book2.txt",
+        "publish_date": "2025-11-07T15:30:53.275943",
+        "ratings": [
+            {
+                "reader_id": "41ff3d81-3dc2-4ded-9207-e66ccc6cba9b",
+                "value": 5,
+                "comment": "best",
                 "__class": "Rating"
             }
         ],

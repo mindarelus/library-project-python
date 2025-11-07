@@ -11,6 +11,7 @@ from services.auth_service import AuthService
 from services.book_service import BookService
 from services.billing_service import BillingService
 from services.admin_service import AdminService
+from services.config_service import ConfigService
 
 # Views
 from view.guest_view import GuestView
@@ -39,8 +40,9 @@ if __name__ == '__main__':
     purchase_repo = PurchaseRepositoryJsonFile('data/purchases.json', uuid_generator)
 
     # Setup services
+    config_service = ConfigService()
     auth_service = AuthService(user_repo)
-    book_service = BookService(book_repo, user_repo, purchase_repo)
+    book_service = BookService(book_repo, user_repo, purchase_repo, config_service)
     billing_service = BillingService(user_repo, book_repo, purchase_repo)
     admin_service = AdminService(user_repo)
 
@@ -53,7 +55,7 @@ if __name__ == '__main__':
 
     # Setup controller
     app_controller = AppController(
-        auth_service, book_service, billing_service, admin_service,
+        auth_service, book_service, billing_service, admin_service, config_service,
         guest_view, reader_view, author_view, book_view, admin_view
     )
 
